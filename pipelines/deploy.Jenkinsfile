@@ -14,15 +14,23 @@ pipeline {
                 sh 'git checkout -b main origin/main'
             }
         }
-        stage('Deploy') {
+        stage('Update YAML manifests') {
             steps {
                 sh '''
                 cd k8s/$SERVICE_NAME
                 sed -i "s|image: .*|image: ${IMAGE_FULL_NAME_PARAM}|" deployment.yaml
                 git add deployment.yaml
                 git commit -m "Jenkins deploy $SERVICE_NAME $IMAGE_FULL_NAME_PARAM"
-                git push origin main
                 '''
+            }
+        }
+        stage('Git push') {
+            steps {
+               withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_TOKEN')]) {
+                 sh '''
+                 git push https://$GITHUB_TOKEN@github.com/alonitac/NetflixInfra.git main
+                 '''
+               }
             }
         }
     }
