@@ -11,8 +11,7 @@ pipeline {
     stages {
         stage('Git setup') {
             steps {
-                sh 'git checkout main'
-                sh 'git pull'
+                sh 'git checkout -b main || git checkout main'
             }
         }
         stage('Update YAML manifests') {
@@ -33,6 +32,11 @@ pipeline {
                  '''
                }
             }
+        }
+    }
+    post {
+        cleanup {
+            cleanWs()
         }
     }
 }
