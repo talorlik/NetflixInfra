@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'general'
-    }
+    agent any
 
     parameters {
         string(name: 'SERVICE_NAME', defaultValue: '', description: '')
