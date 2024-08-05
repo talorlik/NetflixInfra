@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: server
-        image: alonithuji/netflix-app:v1.0.14
+        image: talorlik/netflix-movie-catalog:0.0.1
+        imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service
