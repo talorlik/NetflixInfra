@@ -45,6 +45,13 @@ spec:
       containers:
       - name: server
         image: grafana/grafana:9.5.20-ubuntu
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
         env:
           - name: GF_AUTH_BASIC_ENABLED
             value: 'true'

@@ -16,8 +16,30 @@ spec:
     spec:
       containers:
       - name: server
+<<<<<<< Updated upstream
         image: talorlik/netflix-movie-catalog-dev:v1.0.14
         imagePullPolicy: IfNotPresent
+=======
+        image: talorlik/netflix-movie-catalog:0.0.1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        livenessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/"
+            port: 8081
+        readinessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/status"
+            port: 8081
+>>>>>>> Stashed changes
 ---
 apiVersion: v1
 kind: Service
@@ -28,5 +50,5 @@ spec:
     app: netflix-catalog
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8081
+      targetPort: 8081

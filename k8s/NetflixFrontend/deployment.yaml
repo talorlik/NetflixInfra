@@ -18,9 +18,16 @@ spec:
       - name: server
         image: talorlik/netflix-frontend:0.0.1
         imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
         env:
           - name: MOVIE_CATALOG_SERVICE
-            value: http://netflix-catalog-service:8080
+            value: http://netflix-catalog-service:8081
           - name: REDIS_URL
             value: redis-service:6379
 ---
@@ -33,5 +40,5 @@ spec:
     app: netflix-frontend
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 3001
+      targetPort: 3001

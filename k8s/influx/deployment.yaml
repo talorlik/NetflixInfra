@@ -27,6 +27,13 @@ spec:
       containers:
       - name: server
         image: influxdb:1.8.10
+        resources:
+          requests:
+            cpu: 200m
+            memory: 512Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
         env:
           - name: INFLUXDB_HTTP_AUTH_ENABLED
             value: 'true'
