@@ -16,11 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-<<<<<<< Updated upstream
         image: talorlik/netflix-movie-catalog-dev:v1.0.14
-        imagePullPolicy: IfNotPresent
-=======
-        image: talorlik/netflix-movie-catalog:0.0.1
         imagePullPolicy: Always
         resources:
           requests:
@@ -39,7 +35,6 @@ spec:
           httpGet:
             path: "/status"
             port: 8081
->>>>>>> Stashed changes
 ---
 apiVersion: v1
 kind: Service
