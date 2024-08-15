@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: talorlik/netflix-movie-catalog-dev:v1.0.16
+        image: talorlik/netflix-movie-catalog-dev:v1.0.17
         imagePullPolicy: Always
         resources:
           requests:
